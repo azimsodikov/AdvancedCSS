@@ -6,3 +6,223 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
+
+* {
+    margin: 0;
+    padding: 0;
+    /* We want browser not to add any padding or margin */
+    box-sizing: border-box;
+    /* Change the box model so the border margin and paddings are not added to the total width and height */
+}
+body {
+    font-family: "Lato", sans-serif;
+    /* All the child elements will inherit font from the this element */
+    font-size: 400;
+    font-weight: 16px;
+    line-height: 1.7;
+    color: #777;
+    padding: 30px;
+    /* Adds padding around the box */
+}
+.header {
+    height: 95vh;
+    /* On every view port height should be 95% of the view */
+    background-image: linear-gradient(to right, 
+    hsla(111, 55%, 64%, 0.8),
+    hsla(160, 64%, 43%, 0.8)) 
+    , url(../img/hero.jpg);
+    /* We can set the properties just by seperating with comma. we set the gradient by using linear-gradient property */
+    background-size: cover;
+    /* On every view, it will try to box the image inside it */
+    background-position: top;
+    /* Image will stay at the top of the container */
+
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    /* he clip-path CSS property creates a clipping region that sets what part of an element should be shown. */
+
+    position: relative;
+    /* We put header position to relative so child element can know where to start to position against */
+}
+.logo-box {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    height: 35px;
+    /* when set width or hight of the image the rest would be figured out by the browser */
+}
+
+.text-box {
+    /* *Perfect way to center the element */
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    /* top and left are positioned in relation to parent element */
+    /* Set the position to absolute, and it should be centered by 50% top and 50% left */
+    transform: translate(-50%, -50%);
+    text-align: center; 
+    /* Centers all the inline elements */
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+
+    backface-visibility: hidden;
+    /* Determines whether or not the 'back' side of a transformed element is visible when facing the viewer. 
+    With an identity transform, the front side of an element faces the viewer. */
+
+    margin-bottom: 60px;
+}
+.heading-primary-main {
+    display: block;
+    /* By default span elements are inline elements */
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    
+    
+    /* animation-timing-function: ease-in; animation behaviour over the cycle */
+    /* animation-iteration-count: 3;  how many times animation happens*/
+    /* animation-delay: 3s; delay before animation starts */
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+
+    animation-name: moveInRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+        /* This the starting point of the animation */
+        /* We want opacity to be 0 and start from left thats why we start from translateX() */
+    }
+    
+    80% {
+        transform: translateX(10px);
+
+
+        /* ransform: rotate(180deg); rotates the element */
+        /* This is the animation where it is in the 80% in */
+        /* We want at 80 percent 10px more push from left */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+        /* What should happen when animation is finished */
+    }
+}
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+        /* This the starting point of the animation */
+        /* We want opacity to be 0 and start from left thats why we start from translateX() */
+    }
+
+    80% {
+        transform: translateX(-10px);
+        /* This is the animation where it is in the 80% in */
+        /* We want at 80 percent 10px more push from left */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+        /* What should happen when animation is finished */
+    }
+}
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+        /* This the starting point of the animation */
+        /* We want opacity to be 0 and start from left thats why we start from translateX() */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+        /* What should happen when animation is finished */
+    }
+}
+.btn:link, 
+.btn:visited {
+    /* :link and other pseudo classes state that happens when user interacts with the element */
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block; 
+    /* Make element behave like a block element */
+    border-radius: 100px;
+    transition: all .2s;
+    /* We want it to be animated on intial state */
+
+    position: relative;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    /* When element is clicked, it would be a active state */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+/* ::after creates a pseudo-element that is the last child of the selected element. 
+It is often used to add cosmetic content to an element with the content property. It is inline by default  */
+
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    /* Makes the element bigger than it is */
+    opacity: 0;
+
+}
+
+.btn-animated {
+    animation: moveInBottom .5s ease-out .75s;
+    animation-fill-mode: backwards;
+    /* Applies styles before 0% */
+
+}
