@@ -7,22 +7,31 @@ Dark green: #28b485
 
 */
 
-* {
+*,
+*::after,
+*::before {
     margin: 0;
     padding: 0;
     /* We want browser not to add any padding or margin */
-    box-sizing: border-box;
+    box-sizing: inherit;
     /* Change the box model so the border margin and paddings are not added to the total width and height */
+}
+html {
+    font-size: 62.5%;
+    /* It is bad practise to have font-size to pixels becuase it is gonna overwrite browsers default font-size, and it will break accessibity; */
 }
 body {
     font-family: "Lato", sans-serif;
     /* All the child elements will inherit font from the this element */
     font-size: 400;
-    font-weight: 16px;
+    /* font-weight: 16px; */
     line-height: 1.7;
     color: #777;
-    padding: 30px;
+    padding: 3rem;
     /* Adds padding around the box */
+
+    box-sizing: border-box;
+    /* Property defines how the user agent should calculate the total width and height of an element. */
 }
 .header {
     height: 95vh;
@@ -44,18 +53,18 @@ body {
     position: relative;
     /* We put header position to relative so child element can know where to start to position against */
 }
-.logo-box {
+.header__logo-box {
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
 }
 
-.logo {
-    height: 35px;
+.header__logo {
+    height: 3.5rem;
     /* when set width or hight of the image the rest would be figured out by the browser */
 }
 
-.text-box {
+.header__text-box {
     /* *Perfect way to center the element */
     position: absolute;
     top: 40%;
@@ -75,14 +84,14 @@ body {
     /* Determines whether or not the 'back' side of a transformed element is visible when facing the viewer. 
     With an identity transform, the front side of an element faces the viewer. */
 
-    margin-bottom: 60px;
+    margin-bottom: 6rem;
 }
-.heading-primary-main {
+.heading-primary--main {
     display: block;
     /* By default span elements are inline elements */
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
 
     animation-name: moveInLeft;
     animation-duration: 1s;
@@ -94,11 +103,11 @@ body {
     /* animation-delay: 3s; delay before animation starts */
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.75rem;
 
     animation-name: moveInRight;
     animation-duration: 1s;
@@ -108,13 +117,13 @@ body {
 @keyframes moveInLeft {
     0% {
         opacity: 0;
-        transform: translateX(-100px);
+        transform: translateX(-10rem);
         /* This the starting point of the animation */
         /* We want opacity to be 0 and start from left thats why we start from translateX() */
     }
     
     80% {
-        transform: translateX(10px);
+        transform: translateX(1rem);
 
 
         /* ransform: rotate(180deg); rotates the element */
@@ -131,13 +140,13 @@ body {
 @keyframes moveInRight {
     0% {
         opacity: 0;
-        transform: translateX(100px);
+        transform: translateX(10rem);
         /* This the starting point of the animation */
         /* We want opacity to be 0 and start from left thats why we start from translateX() */
     }
 
     80% {
-        transform: translateX(-10px);
+        transform: translateX(-1rem);
         /* This is the animation where it is in the 80% in */
         /* We want at 80 percent 10px more push from left */
     }
@@ -151,7 +160,7 @@ body {
 @keyframes moveInBottom {
     0% {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(3rem);
         /* This the starting point of the animation */
         /* We want opacity to be 0 and start from left thats why we start from translateX() */
     }
@@ -167,29 +176,32 @@ body {
     /* :link and other pseudo classes state that happens when user interacts with the element */
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
+    padding: 1.5rem 4rem;
     display: inline-block; 
     /* Make element behave like a block element */
-    border-radius: 100px;
+    border-radius: 10rem;
     transition: all .2s;
     /* We want it to be animated on intial state */
 
     position: relative;
+
+    font-size: 1.6rem;
+    /* Relative to the root size of the font */
 }
 
 .btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
 }
 
 .btn:active {
     transform: translateY(-1px);
     /* When element is clicked, it would be a active state */
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
 
 }
 
-.btn-white {
+.btn--white {
     background-color: #fff;
     color: #777;
 }
@@ -210,7 +222,7 @@ It is often used to add cosmetic content to an element with the content property
     transition: all .4s;
 }
 
-.btn-white::after {
+.btn--white::after {
     background-color: #fff;
 }
 .btn:hover::after {
@@ -220,7 +232,7 @@ It is often used to add cosmetic content to an element with the content property
 
 }
 
-.btn-animated {
+.btn--animated {
     animation: moveInBottom .5s ease-out .75s;
     animation-fill-mode: backwards;
     /* Applies styles before 0% */
