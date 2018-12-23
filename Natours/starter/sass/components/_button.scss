@@ -13,7 +13,7 @@
     
         position: relative;
     
-        font-size: 1.6rem;
+        font-size: $default-font-size;
         /* Relative to the root size of the font */
     }
     
@@ -67,5 +67,27 @@
         animation-fill-mode: backwards;
         /* Applies styles before 0% */
     
+    }
+}
+.btn-text {
+    &:link,
+    &:visited {
+        font-size: $default-font-size;
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: .1rem solid $color-primary;
+        padding: .3rem;
+        transition: all .2s; // To transform work we need to put this property
+    }
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translateY(-2);
+    }
+    &:active {
+        box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+        transform: translateY(0);
     }
 }
