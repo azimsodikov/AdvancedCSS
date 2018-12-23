@@ -1,0 +1,57 @@
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem);
+        /* This the starting point of the animation */
+        /* We want opacity to be 0 and start from left thats why we start from translateX() */
+    }
+    
+    80% {
+        transform: translateX(1rem);
+
+
+        /* ransform: rotate(180deg); rotates the element */
+        /* This is the animation where it is in the 80% in */
+        /* We want at 80 percent 10px more push from left */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+        /* What should happen when animation is finished */
+    }
+}
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+        /* This the starting point of the animation */
+        /* We want opacity to be 0 and start from left thats why we start from translateX() */
+    }
+
+    80% {
+        transform: translateX(-1rem);
+        /* This is the animation where it is in the 80% in */
+        /* We want at 80 percent 10px more push from left */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+        /* What should happen when animation is finished */
+    }
+}
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(3rem);
+        /* This the starting point of the animation */
+        /* We want opacity to be 0 and start from left thats why we start from translateX() */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+        /* What should happen when animation is finished */
+    }
+}

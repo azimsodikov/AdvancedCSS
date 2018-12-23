@@ -1,0 +1,17 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    /* We want browser not to add any padding or margin */
+    box-sizing: inherit;
+    /* Change the box model so the border margin and paddings are not added to the total width and height */
+}
+html {
+    font-size: 62.5%;
+    /* It is bad practise to have font-size to pixels becuase it is gonna overwrite browsers default font-size, and it will break accessibity; */
+}
+body {
+    box-sizing: border-box;
+    /* Property defines how the user agent should calculate the total width and height of an element. */
+}

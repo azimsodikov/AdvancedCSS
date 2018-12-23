@@ -1,0 +1,45 @@
+.header {
+    height: 95vh;
+    /* On every view port height should be 95% of the view */
+    background-image: linear-gradient(
+        to right bottom, 
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)) 
+    , url(../img/hero.jpg);
+    /* We can set the properties just by seperating with comma. we set the gradient by using linear-gradient property */
+    background-size: cover;
+    /* On every view, it will try to box the image inside it */
+    background-position: top;
+    /* Image will stay at the top of the container */
+
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    /* he clip-path CSS property creates a clipping region that sets what part of an element should be shown. */
+
+    position: relative;
+    /* We put header position to relative so child element can know where to start to position against */
+
+    &__logo-box {
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+    }
+    &__logo {
+        height: 3.5rem;
+        /* when set width or hight of the image the rest would be figured out by the browser */
+    }
+    
+    &__text-box {
+        /* *Perfect way to center the element */
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        /* top and left are positioned in relation to parent element */
+        /* Set the position to absolute, and it should be centered by 50% top and 50% left */
+        transform: translate(-50%, -50%);
+        text-align: center; 
+        /* Centers all the inline elements */
+    }
+}
+
+

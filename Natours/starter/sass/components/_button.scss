@@ -1,0 +1,71 @@
+.btn {
+    &:link, 
+    &:visited {
+        /* :link and other pseudo classes state that happens when user interacts with the element */
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block; 
+        /* Make element behave like a block element */
+        border-radius: 10rem;
+        transition: all .2s;
+        /* We want it to be animated on intial state */
+    
+        position: relative;
+    
+        font-size: 1.6rem;
+        /* Relative to the root size of the font */
+    }
+    
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-black, .2);
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            /* Makes the element bigger than it is */
+            opacity: 0;
+        
+        }
+    }
+    
+    &:active {
+        transform: translateY(-1px);
+        /* When element is clicked, it would be a active state */
+        box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+    
+    }
+    
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+        &::after {
+            background-color: $color-white;
+        }
+    }
+    /* ::after creates a pseudo-element that is the last child of the selected element. 
+    It is often used to add cosmetic content to an element with the content property. It is inline by default  */
+    
+    &::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 100px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    
+        transition: all .4s;
+    }
+    
+    
+    
+    
+    &--animated {
+        animation: moveInBottom .5s ease-out .75s;
+        animation-fill-mode: backwards;
+        /* Applies styles before 0% */
+    
+    }
+}
