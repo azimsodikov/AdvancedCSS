@@ -1,4 +1,5 @@
 .btn {
+    &,
     &:link, 
     &:visited {
         /* :link and other pseudo classes state that happens when user interacts with the element */
@@ -15,6 +16,10 @@
     
         font-size: $default-font-size;
         /* Relative to the root size of the font */
+
+        //Change for the button
+        border: none;
+        cursor: pointer;
     }
     
     &:hover {
@@ -28,7 +33,9 @@
         }
     }
     
-    &:active {
+    &:active,
+    &:focus {
+        outline: none;
         transform: translateY(-1px);
         /* When element is clicked, it would be a active state */
         box-shadow: 0 .5rem 1rem rgba($color-black, .2);
