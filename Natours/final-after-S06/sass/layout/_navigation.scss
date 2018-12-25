@@ -57,7 +57,7 @@
         z-index: 1500;
 
         opacity: 0;
-        width: 0;
+        width: 100%;
         transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 
@@ -65,7 +65,7 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
         list-style: none;
         text-align: center;
         width: 100%;
@@ -154,12 +154,12 @@
     }
 
     &__checkbox:checked + &__button &__icon::before {
-        top: 0;
+        top: 0rem;
         transform: rotate(135deg);
     }
 
     &__checkbox:checked + &__button &__icon::after {
-        top: 0;
+        top: 0rem;
         transform: rotate(-135deg);
     }
 }

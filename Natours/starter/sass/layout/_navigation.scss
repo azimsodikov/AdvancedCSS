@@ -34,7 +34,7 @@
         left: 0;
         z-index: 1500;
 
-        width: 100%;
+        width: 0;
         opacity: 0;
         transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
@@ -128,11 +128,11 @@
         background-color: transparent;
     }
     &__checkbox:checked + &__button &__icon::before {
-        top: 0rem;
+        top: 0;
         transform: rotate(135deg);
     }
     &__checkbox:checked + &__button &__icon::after {
-        top: 0rem;
+        top: 0;
         transform: rotate(-135deg);
     }
 
