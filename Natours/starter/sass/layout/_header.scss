@@ -5,7 +5,7 @@
         to right bottom, 
         rgba($color-primary-light, 0.8),
         rgba($color-primary-dark, 0.8)) 
-    , url(../img/hero.jpg);
+    , url(../img/hero-small.jpg);
     /* We can set the properties just by seperating with comma. we set the gradient by using linear-gradient property */
     background-size: cover;
     /* On every view, it will try to box the image inside it */
@@ -19,6 +19,15 @@
     position: relative;
     /* We put header position to relative so child element can know where to start to position against */
 
+    @media (min-resolution: 192dpi) and (min-width: 37.5em), // 192 dots per inch (apple retina deisplay resolution)
+           (min-width: 125em){ // This expression after the comma means or this 
+        // If resolution is 192dpi and min width is 600px, then load this image
+        background-image: linear-gradient(
+        to right bottom, 
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)),
+        url(../img/hero.jpg);
+    }
 
     @include respond(phone) { // Changes the line in the header part
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
