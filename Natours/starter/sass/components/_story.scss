@@ -9,6 +9,16 @@
     font-size: $default-font-size;
     transform: skewX(-12deg);
     
+    @include respond(tab-port) {
+        width: 100%;
+        padding: 4rem;
+        padding-left: 7rem;
+    }
+
+    @include respond(phone) {
+        transform: skewX(0);
+    }
+
     &__shape {
         width: 15rem;
         height: 15rem;
@@ -22,6 +32,10 @@
         // There is no way in css to have two transform property
 
         position: relative;
+        
+        @include respond(phone) {
+            transform: translateX(-3rem) skewX(0); // Put some padding around the shape
+        }
     }
 
     &__img {
@@ -34,6 +48,9 @@
     &__text {
         transform: skewX(12deg);
 
+        @include respond(phone) {
+            transform: skewX(0); // Put some padding around the shape
+        }
     }
 
     &__caption { // Caption animates and moves in as you hover the image

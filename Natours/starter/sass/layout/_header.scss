@@ -19,6 +19,11 @@
     position: relative;
     /* We put header position to relative so child element can know where to start to position against */
 
+
+    @include respond(phone) { // Changes the line in the header part
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    }
     &__logo-box {
         position: absolute;
         top: 4rem;

@@ -35,4 +35,10 @@ html {
 body {
     box-sizing: border-box;
     /* Property defines how the user agent should calculate the total width and height of an element. */
+    padding: 3rem;
+    /* Adds padding around the box */
+
+    @include respond(tab-port) {
+        padding: 0; // Gets rid of white space around the box
+    }
 }
