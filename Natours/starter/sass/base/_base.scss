@@ -8,8 +8,29 @@
     /* Change the box model so the border margin and paddings are not added to the total width and height */
 }
 html {
-    font-size: 62.5%;
+    // 1 rem - 10px; 10px/16px = 62.5%;
+    font-size: 62.5%; // This is the singe source of sizes where all the rem's is gonna reference to; If we change this, it will reflect all the rems;
     /* It is bad practise to have font-size to pixels becuase it is gonna overwrite browsers default font-size, and it will break accessibity; */
+    /*
+    Since tab-port and phone are gonna apply, we do not need phone config here; 
+    // @include respond(phone) { // Passing 'phone' as a parameter 
+    //     font-size: 50%; // This code will appear inside a mixin;
+
+    // }
+    */
+    @include respond(tab-land) {
+       font-size: 56.25%; // This code will appear inside a mixin;
+       // 1rem = 9px, 9/16 = 56.25%
+       
+    }
+    @include respond(tab-port) {
+        font-size: 50%; // This code will appear inside a mixin;
+        // 1rem = 8px, 8/16 = 50%
+    }
+    @include respond(big-desktop) {
+        font-size: 75%; // This code will appear inside a mixin;
+        // 1rem = 12px, 12/16 = 75%
+    }
 }
 body {
     box-sizing: border-box;
