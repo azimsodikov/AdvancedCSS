@@ -154,7 +154,9 @@
         font-weight: 100;
     }
 
-    @include respond(tab-port) { // Restyled the whole card to optimize for smaller touch screens
+    // @include respond(tab-port) { // Restyled the whole card to optimize for smaller touch screens
+    @media only screen and (max-width: 56.25em),
+           only screen and (hover: none) { // This means this could only be used on devices where it can be hovered
         height: auto;
         border-radius: .3rem;
         background-color: $color-white;

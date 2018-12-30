@@ -42,3 +42,8 @@ body {
         padding: 0; // Gets rid of white space around the box
     }
 }
+
+::selection { // Makes the selected text color change to let the user that it is selected
+    background-color: $color-primary;
+    color: $color-white;
+}

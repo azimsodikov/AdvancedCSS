@@ -21,7 +21,7 @@
         height: 95vh;
 
     }
-    @media (min-resolution: 192dpi) and (min-width: 37.5em), // 192 dots per inch (apple retina deisplay resolution)
+    @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em), // 192 dots per inch (apple retina deisplay resolution)
            (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), // This portion is for safari
            (min-width: 125em){ // This expression after the comma means or this 
         // If resolution is 192dpi and min width is 600px, then load this image

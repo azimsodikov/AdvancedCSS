@@ -36,26 +36,28 @@ $breakpoint argument choices;
 
 ORDER: Base + typography > general layout + grid > page layout > components
 1em = 16px
+
+ only screens means it only applies to screens and if someone tries to print this out it will not apply
 */
 
-@mixin respond($breakpoint) {
+@mixin respond($breakpoint) { 
     @if $breakpoint == phone { // If $breakpoint equals phone it will apply this mixin;
-        @media (max-width: 37.5em) { // 600px
+        @media only screen and (max-width: 37.5em) { // 600px
             @content; // This directive allows to pass content to it when this mixin is used;
         }
     }
     @if $breakpoint == tab-port { // If $breakpoint equals phone it will apply this mixin;
-        @media (max-width: 56.25em) { // 900px
+        @media only screen and (max-width: 56.25em) { // 900px
             @content; // This directive allows to pass content to it when this mixin is used;
         }
     }
     @if $breakpoint == tab-land { // If $breakpoint equals phone it will apply this mixin;
-        @media (max-width: 75em) { // 1200px
+        @media only screen and (max-width: 75em) { // 1200px
             @content; // This directive allows to pass content to it when this mixin is used;
         }
     }
     @if $breakpoint == big-desktop { // If $breakpoint equals phone it will apply this mixin;
-        @media (min-width: 125.5em) { // 1800px
+        @media only screen and (min-width: 125.5em) { // 1800px
             @content; // This directive allows to pass content to it when this mixin is used;
         }
     }
