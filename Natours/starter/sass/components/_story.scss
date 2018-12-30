@@ -23,15 +23,20 @@
         width: 15rem;
         height: 15rem;
         float: left;
-        -webkit-shape-outside: circle(50% at 50% 50%); // Shapes the text around the circle 
-        shape-outside: circle(50% at 50% 50%);
-        -webkit-clip-path: circle(50% at 50% 50%); // Makes the circle
-        clip-path: circle(50% at 50% 50%);
-
+        
         transform: translateX(-3rem) skewX(12deg); // Put some padding around the shape
         // There is no way in css to have two transform property
-
         position: relative;
+        overflow: hidden; // Cuts out the element which is overflowing the parent element
+        border-radius: 50%;
+
+        @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) { // If this is supported then apply this
+            -webkit-clip-path: circle(50% at 50% 50%); // Makes the circle
+            clip-path: polygon(50% at 50% 50%);
+            -webkit-shape-outside: circle(50% at 50% 50%); // Shapes the text around the circle 
+            shape-outside: circle(50% at 50% 50%);
+            border-radius: none;
+        }
         
         @include respond(phone) {
             transform: translateX(-3rem) skewX(0); // Put some padding around the shape

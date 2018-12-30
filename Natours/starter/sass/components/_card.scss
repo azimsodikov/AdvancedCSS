@@ -14,6 +14,7 @@
         top: 0;
         left: 0;
         width: 100%; // If we do not give width, it will try to fit inside of the parent element
+        -webkit-backface-visibility: hidden; // This makes it work in the safari
         backface-visibility: hidden; // Hides back side of the element
         border-radius: .3rem;
         overflow: hidden; // Hides the overflowing part of the image

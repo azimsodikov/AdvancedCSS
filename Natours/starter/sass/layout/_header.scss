@@ -1,5 +1,5 @@
 .header {
-    height: 95vh;
+    height: 85vh;
     /* On every view port height should be 95% of the view */
     background-image: linear-gradient(
         to right bottom, 
@@ -10,16 +10,19 @@
     background-size: cover;
     /* On every view, it will try to box the image inside it */
     background-position: top;
-    /* Image will stay at the top of the container */
-
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-    /* he clip-path CSS property creates a clipping region that sets what part of an element should be shown. */
-
     position: relative;
     /* We put header position to relative so child element can know where to start to position against */
 
+    @supports (clip-path: polygon(0 0)) or (clip-path: polygon(0 0)) { // If this is supported then apply this
+        /* Image will stay at the top of the container */
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        /* he clip-path CSS property creates a clipping region that sets what part of an element should be shown. */
+        height: 95vh;
+
+    }
     @media (min-resolution: 192dpi) and (min-width: 37.5em), // 192 dots per inch (apple retina deisplay resolution)
+           (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), // This portion is for safari
            (min-width: 125em){ // This expression after the comma means or this 
         // If resolution is 192dpi and min width is 600px, then load this image
         background-image: linear-gradient(

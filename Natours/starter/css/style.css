@@ -347,6 +347,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: .3rem;
     overflow: hidden;
@@ -479,12 +480,17 @@ body {
     width: 15rem;
     height: 15rem;
     float: left;
-    -webkit-shape-outside: circle(50% at 50% 50%);
-    shape-outside: circle(50% at 50% 50%);
-    -webkit-clip-path: circle(50% at 50% 50%);
-    clip-path: circle(50% at 50% 50%);
     transform: translateX(-3rem) skewX(12deg);
-    position: relative; }
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%; }
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+      .story__shape {
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: polygon(50% at 50% 50%);
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%);
+        border-radius: none; } }
     @media (max-width: 37.5em) {
       .story__shape {
         transform: translateX(-3rem) skewX(0); } }
@@ -624,7 +630,17 @@ body {
   z-index: 9999;
   opacity: 0;
   visibility: hidden;
-  transition: all .3s; }
+  transition: all .3s;
+  /*
+     * @supports is a feature query an if statement where you can check whether browser supports this css property
+     * if yes apply below styles if not keep it as it is. It is called graceful degradation;
+
+    */ }
+  @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+    .popup {
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      background-color: rgba(0, 0, 0, 0.3); } }
   .popup__content {
     position: absolute;
     top: 50%;
@@ -700,20 +716,23 @@ body {
     color: #55c57a; }
 
 .header {
-  height: 95vh;
+  height: 85vh;
   /* On every view port height should be 95% of the view */
   background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero-small.jpg);
   /* We can set the properties just by seperating with comma. we set the gradient by using linear-gradient property */
   background-size: cover;
   /* On every view, it will try to box the image inside it */
   background-position: top;
-  /* Image will stay at the top of the container */
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  /* he clip-path CSS property creates a clipping region that sets what part of an element should be shown. */
   position: relative;
   /* We put header position to relative so child element can know where to start to position against */ }
-  @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) {
+  @supports (clip-path: polygon(0 0)) or (clip-path: polygon(0 0)) {
+    .header {
+      /* Image will stay at the top of the container */
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+      /* he clip-path CSS property creates a clipping region that sets what part of an element should be shown. */
+      height: 95vh; } }
+  @media (min-resolution: 192dpi) and (min-width: 37.5em), (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-width: 125em) {
     .header {
       background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg); } }
   @media (max-width: 37.5em) {
